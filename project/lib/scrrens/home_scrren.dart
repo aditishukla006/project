@@ -288,7 +288,7 @@ class _HomePageState extends State<HomePage> {
                         ClipRRect(
                           borderRadius: BorderRadius.circular(16),
                           child: Image.asset(
-                            "assets/clocktower.jpg",
+                            "assets/clock.jpg",
                             width: 80,
                             height: 80,
                             fit: BoxFit.cover,
