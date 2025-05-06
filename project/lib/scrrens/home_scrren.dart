@@ -114,7 +114,7 @@ class _HomePageState extends State<HomePage> {
                     SizedBox(width: 10),
                     Image.asset('assets/meggi.png'),
                     SizedBox(width: 10),
-                    Image.asset('assets/chesse burger.png'),
+                    Image.asset('assets/burger.jpg'),
                   ],
                 ),
               ),
@@ -168,8 +168,6 @@ class _HomePageState extends State<HomePage> {
               ),
 
               const SizedBox(height: 20),
-
-              // Food Playlist (added after cuisines)
               const Text(
                 "Food playlist",
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
@@ -187,7 +185,7 @@ class _HomePageState extends State<HomePage> {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(16),
                         child: Stack(
-                          alignment: Alignment.bottomLeft,
+                          alignment: Alignment.bottomCenter,
                           children: [
                             Image.asset(
                               item['image']!,
@@ -196,7 +194,7 @@ class _HomePageState extends State<HomePage> {
                               fit: BoxFit.cover,
                             ),
                             Container(
-                              width: 120,
+                              width: 150,
                               height: 150,
                               alignment: Alignment.bottomCenter,
                               decoration: BoxDecoration(
@@ -228,6 +226,103 @@ class _HomePageState extends State<HomePage> {
                       ),
                     );
                   },
+                ),
+              ),
+
+              // Featured Hives
+              const SizedBox(height: 20),
+              RichText(
+                text: const TextSpan(
+                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                  children: [
+                    TextSpan(
+                      text: 'Our ',
+                      style: TextStyle(color: Colors.black, fontSize: 18),
+                    ),
+                    TextSpan(
+                      text: 'Featured ',
+                      style: TextStyle(color: Colors.black),
+                    ),
+                    TextSpan(
+                      text: 'Hives',
+                      style: TextStyle(color: Colors.orange),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 16),
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(24),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black12,
+                      blurRadius: 10,
+                      offset: Offset(0, 4),
+                    ),
+                  ],
+                ),
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Expanded(
+                          child: SizedBox(
+                            height: 60,
+                            child: ListView(
+                              scrollDirection: Axis.horizontal,
+                              children: [
+                                _foodItem("assets/biryani.png", "₹ 450.00"),
+                                const SizedBox(width: 10),
+                                _foodItem("assets/paneer.jpg", "₹ 450.00"),
+                                const SizedBox(width: 10),
+                                _foodItem("assets/curry.jpg", "₹ 450.00"),
+                              ],
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 12),
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(16),
+                          child: Image.asset(
+                            "assets/clocktower.jpg",
+                            width: 80,
+                            height: 80,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 12),
+                    Row(
+                      children: const [
+                        Icon(Icons.circle, size: 10, color: Colors.red),
+                        Icon(Icons.circle, size: 10, color: Colors.green),
+                        SizedBox(width: 6),
+                        Text(
+                          "Indian/ chinese/ thai/ japanese",
+                          style: TextStyle(fontSize: 12, color: Colors.black54),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 6),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: const [
+                        Expanded(
+                          child: Text(
+                            "Clock Tower: Restaurant cum Cafe",
+                            style: TextStyle(fontWeight: FontWeight.w600),
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                        Icon(Icons.trending_up, color: Colors.green),
+                      ],
+                    ),
+                  ],
                 ),
               ),
               const SizedBox(height: 30),
@@ -265,5 +360,18 @@ Widget _CuisineCard({
         style: TextStyle(fontSize: 10, color: Colors.grey[700]),
       ),
     ),
+  );
+}
+
+Widget _foodItem(String imagePath, String price) {
+  return Column(
+    children: [
+      ClipRRect(
+        borderRadius: BorderRadius.circular(12),
+        child: Image.asset(imagePath, height: 40, width: 40, fit: BoxFit.cover),
+      ),
+      const SizedBox(height: 4),
+      Text(price, style: const TextStyle(fontSize: 10)),
+    ],
   );
 }
