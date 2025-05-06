@@ -8,6 +8,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final List<Map<String, String>> foodItems = [
+    {"title": "Biriyani Lover", "image": "assets/biryani.png"},
+    {"title": "Kwality Bites", "image": "assets/icecreame.jpg"},
+    {"title": "Baarish-e-Pakoda", "image": "assets/pakoda.jpg"},
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -127,7 +133,7 @@ class _HomePageState extends State<HomePage> {
                   Image.asset("assets/line1.png", width: 10),
                 ],
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
 
               // Cuisine Grid
               GridView.count(
@@ -160,6 +166,71 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ],
               ),
+
+              const SizedBox(height: 20),
+
+              // Food Playlist (added after cuisines)
+              const Text(
+                "Food playlist",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 10),
+              SizedBox(
+                height: 150,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: foodItems.length,
+                  itemBuilder: (context, index) {
+                    final item = foodItems[index];
+                    return Padding(
+                      padding: const EdgeInsets.only(right: 16.0),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(16),
+                        child: Stack(
+                          alignment: Alignment.bottomLeft,
+                          children: [
+                            Image.asset(
+                              item['image']!,
+                              height: 150,
+                              width: 150,
+                              fit: BoxFit.cover,
+                            ),
+                            Container(
+                              width: 120,
+                              height: 150,
+                              alignment: Alignment.bottomCenter,
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  colors: [
+                                    Colors.black.withOpacity(0.6),
+                                    Colors.transparent,
+                                  ],
+                                  begin: Alignment.bottomCenter,
+                                  end: Alignment.topCenter,
+                                ),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  item['title']!,
+                                  textAlign: TextAlign.center,
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w900,
+                                    fontSize: 18,
+                                    height: 1.2,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+              const SizedBox(height: 30),
             ],
           ),
         ),

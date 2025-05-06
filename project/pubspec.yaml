@@ -77,8 +77,9 @@ flutter:
     - assets/chinese.jpg
     - assets/pizza.jpg
     - assets/dhosa.jpg
-    - assets/splashh.jpg
     - assets/splash.gif
+    - assets/icecreame.jpg
+    - assets/pakoda.jpg
   
 
   # An image asset can refer to one or more resolution-specific "variants", see
