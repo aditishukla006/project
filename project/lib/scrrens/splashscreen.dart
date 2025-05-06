@@ -28,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset('assets/splashh.jpg', width: 150, height: 150),
+            Image.asset('assets/splash.gif', width: 150, height: 150),
             const SizedBox(height: 20),
             const Text(
               'Zomato',
