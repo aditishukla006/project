@@ -1,23 +1,13 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: const HomePage(),
-    );
-  }
-}
-
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +31,7 @@ class HomePage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Top Banner
+              // Banner
               Stack(
                 children: [
                   Container(
@@ -55,33 +45,13 @@ class HomePage extends StatelessWidget {
                     child: Row(
                       children: [
                         Expanded(
-                          child: Text(
-                            '15% OFF\non your favorite hives',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
+                          child: Image.asset('assets/img1.png', height: 100),
                         ),
-                        Image.asset(
-                          'assets/scooter.png',
-                          height: 80,
-                        ), // Placeholder
                       ],
                     ),
                   ),
-                  Positioned(
-                    top: 0,
-                    left: 20,
-                    child: Image.asset(
-                      'assets/foods.png',
-                      height: 70,
-                    ), // Placeholder
-                  ),
                 ],
               ),
-
               const SizedBox(height: 20),
 
               // Leaderboard
@@ -90,26 +60,25 @@ class HomePage extends StatelessWidget {
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 12),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: const [
-                  _LeaderboardItem(rank: "#1", name: "Tnnet"),
-                  _LeaderboardItem(rank: "#2", name: "Nivara"),
-                  _LeaderboardItem(rank: "#3", name: "NearHive"),
-                  CircleAvatar(
-                    backgroundColor: Colors.grey,
-                    child: Icon(Icons.person),
-                  ),
-                  CircleAvatar(
-                    backgroundColor: Colors.grey,
-                    child: Icon(Icons.person),
-                  ),
-                ],
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    Image.asset('assets/leaderboard1.png', height: 100),
+                    SizedBox(width: 20),
+                    Image.asset('assets/laderboard2.png', height: 100),
+                    SizedBox(width: 20),
+                    Image.asset('assets/leaderboard3.png', height: 100),
+                    SizedBox(width: 20),
+                    Image.asset('assets/leaderboard4.png', height: 100),
+                    SizedBox(width: 20),
+                    Image.asset('assets/leaderboard5.png', height: 100),
+                  ],
+                ),
               ),
-
               const SizedBox(height: 20),
 
-              // Search & Filter
+              // Search
               Row(
                 children: [
                   Expanded(
@@ -127,7 +96,6 @@ class HomePage extends StatelessWidget {
                   Icon(Icons.filter_alt_outlined),
                 ],
               ),
-
               const SizedBox(height: 20),
 
               // Food Scroll
@@ -135,48 +103,63 @@ class HomePage extends StatelessWidget {
                 height: 180,
                 child: ListView(
                   scrollDirection: Axis.horizontal,
-                  children: const [
-                    _FoodCard(
-                      tag: "#clocktower",
-                      title: "Chicken Biryani",
-                      image: "assets/biryani.png",
-                    ),
-                    _FoodCard(
-                      tag: "#fusionfrenzy",
-                      title: "Chicken Maggie",
-                      image: "assets/maggie.png",
-                    ),
-                    _FoodCard(
-                      tag: "#lockupcafe",
-                      title: "Veg Cheese Burger",
-                      image: "assets/burger.png",
-                    ),
+                  children: [
+                    Image.asset('assets/biryani.png'),
+                    SizedBox(width: 10),
+                    Image.asset('assets/meggi.png'),
+                    SizedBox(width: 10),
+                    Image.asset('assets/chesse burger.png'),
                   ],
                 ),
               ),
 
               const SizedBox(height: 20),
-
-              const Text(
-                "Cuisines you should try",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset("assets/line1.png", width: 10),
+                  const SizedBox(width: 8),
+                  const Text(
+                    "Cuisines you should try",
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(width: 8),
+                  Image.asset("assets/line1.png", width: 10),
+                ],
               ),
-              const SizedBox(height: 12),
+              SizedBox(height: 20),
 
-              Wrap(
-                spacing: 8,
-                runSpacing: 8,
-                children: const [
-                  _CuisineChip(label: "Indian", sub: "Biryani, Naan, Roti"),
-                  _CuisineChip(label: "Chinese", sub: "Noodles, Dumplings"),
-                  _CuisineChip(label: "Thai", sub: "Thukpa, Sea Salad"),
-                  _CuisineChip(
-                    label: "American",
-                    sub: "Pizza, Burger, Doritos",
+              // Cuisine Grid
+              GridView.count(
+                crossAxisCount: 2,
+                shrinkWrap: true,
+                crossAxisSpacing: 8,
+                mainAxisSpacing: 8,
+                physics: NeverScrollableScrollPhysics(),
+                childAspectRatio: 3.0,
+                children: [
+                  _CuisineCard(
+                    image: 'assets/thali1.jpg',
+                    title: 'Indian',
+                    subtitle: 'Biriyani, Naan, Roti',
+                  ),
+                  _CuisineCard(
+                    image: 'assets/chinese.jpg',
+                    title: 'Chinese',
+                    subtitle: 'Noodles, Fried Rice',
+                  ),
+                  _CuisineCard(
+                    image: 'assets/pizza.jpg',
+                    title: 'Italian',
+                    subtitle: 'Pizza, Pasta',
+                  ),
+                  _CuisineCard(
+                    image: 'assets/dhosa.jpg',
+                    title: 'South Indian',
+                    subtitle: 'Dosa, Idli, Vada',
                   ),
                 ],
               ),
-              const SizedBox(height: 20),
             ],
           ),
         ),
@@ -185,115 +168,31 @@ class HomePage extends StatelessWidget {
   }
 }
 
-// Leaderboard Widget
-class _LeaderboardItem extends StatelessWidget {
-  final String rank;
-  final String name;
-
-  const _LeaderboardItem({required this.rank, required this.name});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        CircleAvatar(radius: 24, child: Text(rank)),
-        const SizedBox(height: 4),
-        Text(name, style: const TextStyle(fontSize: 12)),
-      ],
-    );
-  }
-}
-
-// Food Card
-class _FoodCard extends StatelessWidget {
-  final String tag;
-  final String title;
-  final String image;
-
-  const _FoodCard({
-    required this.tag,
-    required this.title,
-    required this.image,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 140,
-      margin: const EdgeInsets.only(right: 12),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Stack(
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(12),
-                child: Image.asset(
-                  image,
-                  height: 100,
-                  width: 140,
-                  fit: BoxFit.cover,
-                ),
-              ),
-              Positioned(
-                top: 6,
-                left: 6,
-                child: Container(
-                  color: Colors.black54,
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 6,
-                    vertical: 2,
-                  ),
-                  child: Text(
-                    tag,
-                    style: const TextStyle(color: Colors.white, fontSize: 10),
-                  ),
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 8),
-          Text(title, style: const TextStyle(fontWeight: FontWeight.w500)),
-          Row(
-            children: const [
-              Icon(Icons.remove_red_eye_outlined, size: 14),
-              SizedBox(width: 4),
-              Text("1.7k", style: TextStyle(fontSize: 12)),
-            ],
-          ),
-        ],
+Widget _CuisineCard({
+  required String image,
+  required String title,
+  required String subtitle,
+}) {
+  return Container(
+    padding: EdgeInsets.all(8),
+    decoration: BoxDecoration(
+      color: Color(0xFFF7F7F7),
+      borderRadius: BorderRadius.circular(100),
+      border: Border.all(color: Colors.grey.shade300),
+    ),
+    child: ListTile(
+      contentPadding: EdgeInsets.zero,
+      leading: ClipOval(
+        child: Image.asset(image, width: 40, height: 40, fit: BoxFit.cover),
       ),
-    );
-  }
-}
-
-// Cuisine Chip
-class _CuisineChip extends StatelessWidget {
-  final String label;
-  final String sub;
-
-  const _CuisineChip({required this.label, required this.sub});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 160,
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        color: Colors.grey[100],
-        borderRadius: BorderRadius.circular(20),
+      title: Text(
+        title,
+        style: TextStyle(fontWeight: FontWeight.w600, fontSize: 13),
       ),
-      child: Column(
-        children: [
-          Text(label, style: const TextStyle(fontWeight: FontWeight.bold)),
-          const SizedBox(height: 4),
-          Text(
-            sub,
-            textAlign: TextAlign.center,
-            style: const TextStyle(fontSize: 12),
-          ),
-        ],
+      subtitle: Text(
+        subtitle,
+        style: TextStyle(fontSize: 10, color: Colors.grey[700]),
       ),
-    );
-  }
+    ),
+  );
 }
