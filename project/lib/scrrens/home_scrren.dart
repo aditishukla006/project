@@ -445,6 +445,23 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ],
                     ),
+                    const SizedBox(height: 16),
+                    // Add after Hiveverse section
+                    const SizedBox(height: 24), // spacing after Hiveverse
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: [
+                          const SizedBox(width: 16),
+                          _buildFoodImageCard('assets/cafe1.jpg'),
+                          const SizedBox(width: 12),
+                          _buildFoodImageCard('assets/cafe2.jpg'),
+                          const SizedBox(width: 16),
+                          _buildFoodImageCard('assets/cafe3.jpg'),
+                          const SizedBox(width: 16),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -457,6 +474,22 @@ class _HomePageState extends State<HomePage> {
 }
 
 //custom widget
+Widget _buildFoodImageCard(String imagePath) {
+  return ClipRRect(
+    borderRadius: BorderRadius.circular(20),
+    child: Container(
+      width: 200,
+      height: 300,
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(color: Colors.black12, blurRadius: 6, offset: Offset(0, 4)),
+        ],
+      ),
+      child: Image.asset(imagePath, fit: BoxFit.cover),
+    ),
+  );
+}
+
 Widget _buildHiveImageCard({required String imagePath, required String label}) {
   return Column(
     children: [

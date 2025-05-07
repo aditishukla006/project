@@ -88,6 +88,9 @@ flutter:
     - assets/shophive.png
     - assets/medihive.png
     - assets/drophive.png
+    - assets/cafe1.jpg
+    - assets/cafe2.jpg
+    - assets/cafe3.jpg
   
 
   # An image asset can refer to one or more resolution-specific "variants", see
