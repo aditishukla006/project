@@ -288,7 +288,7 @@ class _HomePageState extends State<HomePage> {
                         ClipRRect(
                           borderRadius: BorderRadius.circular(16),
                           child: Image.asset(
-                            "assets/clock.jpg",
+                            "assets/clock.png",
                             width: 80,
                             height: 80,
                             fit: BoxFit.cover,
@@ -326,12 +326,166 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               const SizedBox(height: 30),
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(24),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black12,
+                      blurRadius: 10,
+                      offset: Offset(0, 4),
+                    ),
+                  ],
+                ),
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Expanded(
+                          child: SizedBox(
+                            height: 60,
+                            child: ListView(
+                              scrollDirection: Axis.horizontal,
+                              children: [
+                                _foodItem("assets/biryani.png", "₹ 450.00"),
+                                const SizedBox(width: 10),
+                                _foodItem("assets/paneer.jpg", "₹ 450.00"),
+                                const SizedBox(width: 10),
+                                _foodItem("assets/curry.jpg", "₹ 450.00"),
+                              ],
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 12),
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(16),
+                          child: Image.asset(
+                            "assets/restaurant.jpg",
+                            width: 80,
+                            height: 80,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 12),
+                    Row(
+                      children: const [
+                        Icon(Icons.circle, size: 10, color: Colors.red),
+                        Icon(Icons.circle, size: 10, color: Colors.green),
+                        SizedBox(width: 6),
+                        Text(
+                          "Indian/ chinese/ thai/ japanese",
+                          style: TextStyle(fontSize: 12, color: Colors.black54),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 6),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: const [
+                        Expanded(
+                          child: Text(
+                            "Clock Tower: Restaurant cum Cafe",
+                            style: TextStyle(fontWeight: FontWeight.w600),
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                        Icon(Icons.trending_up, color: Colors.green),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              //button
+              const SizedBox(height: 30),
+              Container(
+                child: Center(
+                  child: TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      "View all hives",
+                      style: TextStyle(color: Colors.black),
+                    ),
+                  ),
+                ),
+              ),
+
+              const SizedBox(height: 30),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      'Hiveverse',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        _buildHiveImageCard(
+                          imagePath: 'assets/drophive.png',
+                          label: 'Parcel Delivery',
+                        ),
+                        _buildHiveImageCard(
+                          imagePath: 'assets/medihive.png',
+                          label: 'Medicines',
+                        ),
+                        _buildHiveImageCard(
+                          imagePath: 'assets/shophive.png',
+                          label: 'Groceries',
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
       ),
     );
   }
+}
+
+//custom widget
+Widget _buildHiveImageCard({required String imagePath, required String label}) {
+  return Column(
+    children: [
+      Container(
+        width: 100,
+        height: 100,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black12,
+              blurRadius: 6,
+              offset: Offset(0, 3),
+            ),
+          ],
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(20),
+          child: Image.asset(imagePath, fit: BoxFit.cover),
+        ),
+      ),
+      const SizedBox(height: 8),
+      Text(
+        label,
+        style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
+      ),
+    ],
+  );
 }
 
 Widget _CuisineCard({
