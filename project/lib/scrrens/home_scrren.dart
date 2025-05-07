@@ -40,7 +40,7 @@ class _HomePageState extends State<HomePage> {
       ),
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 5),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -48,9 +48,9 @@ class _HomePageState extends State<HomePage> {
               Stack(
                 children: [
                   Container(
-                    height: 160,
+                    height: 200,
                     decoration: BoxDecoration(
-                      color: Colors.black,
+                      //color: Colors.black,
                       borderRadius: BorderRadius.circular(20),
                     ),
                     width: double.infinity,
@@ -58,7 +58,10 @@ class _HomePageState extends State<HomePage> {
                     child: Row(
                       children: [
                         Expanded(
-                          child: Image.asset('assets/img1.png', height: 100),
+                          child: Image.asset(
+                            'assets/img1.png',
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ],
                     ),
@@ -70,7 +73,7 @@ class _HomePageState extends State<HomePage> {
               // Leaderboard
               const Text(
                 "Leaderboard",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 25, fontWeight: FontWeight.w900),
               ),
               const SizedBox(height: 12),
               SingleChildScrollView(
@@ -134,7 +137,7 @@ class _HomePageState extends State<HomePage> {
                   const SizedBox(width: 8),
                   const Text(
                     "Cuisines you should try",
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.w900),
                   ),
                   const SizedBox(width: 8),
                   Image.asset("assets/line1.png", width: 10),
@@ -146,10 +149,10 @@ class _HomePageState extends State<HomePage> {
               GridView.count(
                 crossAxisCount: 2,
                 shrinkWrap: true,
-                crossAxisSpacing: 8,
-                mainAxisSpacing: 8,
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
                 physics: NeverScrollableScrollPhysics(),
-                childAspectRatio: 3.0,
+                childAspectRatio: 2.0,
                 children: [
                   _CuisineCard(
                     image: 'assets/thali1.jpg',
@@ -177,7 +180,7 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(height: 20),
               const Text(
                 "Food playlist",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 10),
               SizedBox(
@@ -235,7 +238,7 @@ class _HomePageState extends State<HomePage> {
                   },
                 ),
               ),
-
+              const SizedBox(height: 20),
               // Featured Hives
               const SizedBox(height: 20),
               RichText(
@@ -247,16 +250,17 @@ class _HomePageState extends State<HomePage> {
                       style: TextStyle(color: Colors.black, fontSize: 18),
                     ),
                     TextSpan(
-                      text: 'Featured ',
-                      style: TextStyle(color: Colors.black),
+                      text: '\n \t\t Featured ',
+                      style: TextStyle(color: Colors.black,fontSize: 25),
                     ),
                     TextSpan(
                       text: 'Hives',
-                      style: TextStyle(color: Colors.orange),
+                      style: TextStyle(color: Colors.orange,fontSize:25 ),
                     ),
                   ],
                 ),
               ),
+
               const SizedBox(height: 16),
               Container(
                 decoration: BoxDecoration(
@@ -762,11 +766,11 @@ Widget _CuisineCard({
       ),
       title: Text(
         title,
-        style: TextStyle(fontWeight: FontWeight.w600, fontSize: 13),
+        style: TextStyle(fontWeight: FontWeight.w800, fontSize: 20),
       ),
       subtitle: Text(
         subtitle,
-        style: TextStyle(fontSize: 10, color: Colors.grey[700]),
+        style: TextStyle(fontSize: 15, color: Colors.black38),
       ),
     ),
   );
