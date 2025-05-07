@@ -13,6 +13,7 @@ class _HomePageState extends State<HomePage> {
     {"title": "Kwality Bites", "image": "assets/icecreame.jpg"},
     {"title": "Baarish-e-Pakoda", "image": "assets/pakoda.jpg"},
   ];
+  bool isVeg = true;
 
   @override
   Widget build(BuildContext context) {
@@ -24,11 +25,17 @@ class _HomePageState extends State<HomePage> {
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
           BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_bag_outlined),
+            icon: Icon(Icons.shopping_bag_outlined, color: Colors.black),
             label: '',
           ),
-          BottomNavigationBarItem(icon: Icon(Icons.notifications), label: ''),
-          BottomNavigationBarItem(icon: CircleAvatar(radius: 12), label: ''),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.notifications, color: Colors.black),
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.supervised_user_circle, color: Colors.black12),
+            label: '',
+          ),
         ],
       ),
       body: SafeArea(
@@ -465,6 +472,95 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
+              const SizedBox(width: 16),
+              // Add this after Hiveverse or your previous section
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(height: 24),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: RichText(
+                      text: const TextSpan(
+                        children: [
+                          TextSpan(
+                            text: "Eat ",
+                            style: TextStyle(
+                              fontSize: 28,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.amber,
+                            ),
+                          ),
+                          TextSpan(
+                            text: "&\nRepeat",
+                            style: TextStyle(
+                              fontSize: 28,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Wrap(
+                      spacing: 12,
+                      children: [
+                        _buildFilterChip("under 200 🍏", () {
+                          print("button click");
+                        }),
+                        _buildFilterChip("top rated 🍴", () {}),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Row(
+                      children: [
+                        const Spacer(),
+                        Switch(
+                          value: isVeg,
+                          onChanged: (val) {
+                            setState(() {
+                              isVeg = val; // Update the state based on toggle
+                            });
+                          },
+                          activeColor: Colors.green,
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  _buildFoodItemCard(
+                    image: 'assets/biryani.png',
+                    title: 'Chicken Biriyani',
+                    isVeg: false,
+                    rating: '5.0',
+                    oldPrice: '₹450',
+                    newPrice: '₹300',
+                  ),
+                  _buildFoodItemCard(
+                    image: 'assets/dhosa.jpg',
+                    title: 'Aloo Paratha',
+                    isVeg: true,
+                    rating: '3.5',
+                    oldPrice: '₹450',
+                    newPrice: '₹300',
+                  ),
+                  _buildFoodItemCard(
+                    image: 'assets/pizza.jpg',
+                    title: 'Aloo Paratha',
+                    isVeg: true,
+                    rating: '4.5',
+                    oldPrice: '₹450',
+                    newPrice: '₹300',
+                  ),
+                ],
+              ),
             ],
           ),
         ),
@@ -474,6 +570,132 @@ class _HomePageState extends State<HomePage> {
 }
 
 //custom widget
+Widget _buildFilterChip(String label, VoidCallback onTap) {
+  return InkWell(
+    onTap: onTap,
+    borderRadius: BorderRadius.circular(20),
+    child: Chip(
+      label: Text(label, style: const TextStyle(color: Colors.black)),
+      backgroundColor: Colors.white,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+        side: const BorderSide(color: Colors.black12),
+      ),
+    ),
+  );
+}
+
+Widget _buildFoodItemCard({
+  required String image,
+  required String title,
+  required bool isVeg,
+  required String rating,
+  required String oldPrice,
+  required String newPrice,
+}) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+    child: Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Stack(
+          alignment: Alignment.bottomLeft,
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(12),
+              child: Image.asset(
+                image,
+                width: 100,
+                height: 100,
+                fit: BoxFit.cover,
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.all(6),
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+              decoration: BoxDecoration(
+                color: Colors.black.withOpacity(0.8),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Text(
+                "$rating 🍴",
+                style: const TextStyle(color: Colors.white, fontSize: 12),
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(width: 12),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                title,
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                ),
+              ),
+              const SizedBox(height: 4),
+              Row(
+                children: [
+                  Icon(
+                    Icons.circle,
+                    size: 10,
+                    color: isVeg ? Colors.green : Colors.red,
+                  ),
+                  const SizedBox(width: 4),
+                  Text(
+                    isVeg ? "veg" : "non veg",
+                    style: const TextStyle(fontSize: 12, color: Colors.grey),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 4),
+              Row(
+                children: [
+                  Text(
+                    oldPrice,
+                    style: const TextStyle(
+                      decoration: TextDecoration.lineThrough,
+                      color: Colors.grey,
+                    ),
+                  ),
+                  const SizedBox(width: 6),
+                  Text(
+                    newPrice,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+        InkWell(
+          onTap: () {
+            print("eat"); // Handle Eat button tap
+          },
+          borderRadius: BorderRadius.circular(20),
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 10),
+            decoration: BoxDecoration(
+              color: Colors.amber,
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: const Text(
+              "Eat 🍴",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+            ),
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
 Widget _buildFoodImageCard(String imagePath) {
   return ClipRRect(
     borderRadius: BorderRadius.circular(20),
