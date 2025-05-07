@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+//import 'package:project/scrrens/splashscreen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -23,17 +24,25 @@ class _HomePageState extends State<HomePage> {
         currentIndex: 0,
         selectedItemColor: Colors.orange,
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
+          BottomNavigationBarItem(icon: Icon(Icons.home, size: 55), label: ''),
           BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_bag_outlined, color: Colors.black),
+            icon: Icon(
+              Icons.shopping_bag_outlined,
+              size: 55,
+              color: Colors.black,
+            ),
             label: '',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.notifications, color: Colors.black),
+            icon: Icon(Icons.notifications, size: 55, color: Colors.black),
             label: '',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.supervised_user_circle, color: Colors.black12),
+            icon: Icon(
+              Icons.supervised_user_circle,
+              size: 60,
+              color: Colors.black12,
+            ),
             label: '',
           ),
         ],
@@ -73,7 +82,7 @@ class _HomePageState extends State<HomePage> {
               // Leaderboard
               const Text(
                 "Leaderboard",
-                style: TextStyle(fontSize: 25, fontWeight: FontWeight.w900),
+                style: TextStyle(fontSize: 35, fontWeight: FontWeight.w900),
               ),
               const SizedBox(height: 12),
               SingleChildScrollView(
@@ -137,7 +146,7 @@ class _HomePageState extends State<HomePage> {
                   const SizedBox(width: 8),
                   const Text(
                     "Cuisines you should try",
-                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.w900),
+                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.w900),
                   ),
                   const SizedBox(width: 8),
                   Image.asset("assets/line1.png", width: 10),
@@ -180,7 +189,7 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(height: 20),
               const Text(
                 "Food playlist",
-                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 10),
               SizedBox(
@@ -247,15 +256,15 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     TextSpan(
                       text: 'Our ',
-                      style: TextStyle(color: Colors.black, fontSize: 18),
+                      style: TextStyle(color: Colors.black, fontSize: 32),
                     ),
                     TextSpan(
                       text: '\n \t\t Featured ',
-                      style: TextStyle(color: Colors.black,fontSize: 25),
+                      style: TextStyle(color: Colors.black, fontSize: 40),
                     ),
                     TextSpan(
                       text: 'Hives',
-                      style: TextStyle(color: Colors.orange,fontSize:25 ),
+                      style: TextStyle(color: Colors.orange, fontSize: 40),
                     ),
                   ],
                 ),
@@ -282,7 +291,8 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         Expanded(
                           child: SizedBox(
-                            height: 60,
+                            height: 150,
+                            width: 150,
                             child: ListView(
                               scrollDirection: Axis.horizontal,
                               children: [
@@ -300,8 +310,8 @@ class _HomePageState extends State<HomePage> {
                           borderRadius: BorderRadius.circular(16),
                           child: Image.asset(
                             "assets/clock.png",
-                            width: 80,
-                            height: 80,
+                            width: 180,
+                            height: 180,
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -315,7 +325,11 @@ class _HomePageState extends State<HomePage> {
                         SizedBox(width: 6),
                         Text(
                           "Indian/ chinese/ thai/ japanese",
-                          style: TextStyle(fontSize: 12, color: Colors.black54),
+                          style: TextStyle(
+                            fontSize: 15,
+                            color: Colors.black,
+                            //fontWeight: FontWeight.w900,
+                          ),
                         ),
                       ],
                     ),
@@ -326,7 +340,10 @@ class _HomePageState extends State<HomePage> {
                         Expanded(
                           child: Text(
                             "Clock Tower: Restaurant cum Cafe",
-                            style: TextStyle(fontWeight: FontWeight.w600),
+                            style: TextStyle(
+                              fontWeight: FontWeight.w900,
+                              fontSize: 20,
+                            ),
                             overflow: TextOverflow.ellipsis,
                           ),
                         ),
@@ -357,7 +374,8 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         Expanded(
                           child: SizedBox(
-                            height: 60,
+                            height: 150,
+                            width: 150,
                             child: ListView(
                               scrollDirection: Axis.horizontal,
                               children: [
@@ -375,8 +393,8 @@ class _HomePageState extends State<HomePage> {
                           borderRadius: BorderRadius.circular(16),
                           child: Image.asset(
                             "assets/restaurant.jpg",
-                            width: 80,
-                            height: 80,
+                            width: 180,
+                            height: 180,
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -390,7 +408,7 @@ class _HomePageState extends State<HomePage> {
                         SizedBox(width: 6),
                         Text(
                           "Indian/ chinese/ thai/ japanese",
-                          style: TextStyle(fontSize: 12, color: Colors.black54),
+                          style: TextStyle(fontSize: 15, color: Colors.black),
                         ),
                       ],
                     ),
@@ -401,7 +419,10 @@ class _HomePageState extends State<HomePage> {
                         Expanded(
                           child: Text(
                             "Clock Tower: Restaurant cum Cafe",
-                            style: TextStyle(fontWeight: FontWeight.w600),
+                            style: TextStyle(
+                              fontWeight: FontWeight.w900,
+                              fontSize: 20,
+                            ),
                             overflow: TextOverflow.ellipsis,
                           ),
                         ),
@@ -419,7 +440,7 @@ class _HomePageState extends State<HomePage> {
                     onPressed: () {},
                     child: Text(
                       "View all hives",
-                      style: TextStyle(color: Colors.black),
+                      style: TextStyle(color: Colors.black, fontSize: 20),
                     ),
                   ),
                 ),
@@ -434,7 +455,7 @@ class _HomePageState extends State<HomePage> {
                     const Text(
                       'Hiveverse',
                       style: TextStyle(
-                        fontSize: 18,
+                        fontSize: 35,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -490,7 +511,7 @@ class _HomePageState extends State<HomePage> {
                           TextSpan(
                             text: "Eat ",
                             style: TextStyle(
-                              fontSize: 28,
+                              fontSize: 35,
                               fontWeight: FontWeight.bold,
                               color: Colors.amber,
                             ),
@@ -498,7 +519,7 @@ class _HomePageState extends State<HomePage> {
                           TextSpan(
                             text: "&\nRepeat",
                             style: TextStyle(
-                              fontSize: 28,
+                              fontSize: 35,
                               fontWeight: FontWeight.bold,
                               color: Colors.black,
                             ),
@@ -541,7 +562,7 @@ class _HomePageState extends State<HomePage> {
                   const SizedBox(height: 8),
                   _buildFoodItemCard(
                     image: 'assets/biryani.png',
-                    title: 'Chicken Biriyani',
+                    title: 'Pizza',
                     isVeg: false,
                     rating: '5.0',
                     oldPrice: '₹450',
@@ -579,7 +600,10 @@ Widget _buildFilterChip(String label, VoidCallback onTap) {
     onTap: onTap,
     borderRadius: BorderRadius.circular(20),
     child: Chip(
-      label: Text(label, style: const TextStyle(color: Colors.black)),
+      label: Text(
+        label,
+        style: const TextStyle(color: Colors.black, fontSize: 20),
+      ),
       backgroundColor: Colors.white,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
@@ -623,7 +647,7 @@ Widget _buildFoodItemCard({
               ),
               child: Text(
                 "$rating 🍴",
-                style: const TextStyle(color: Colors.white, fontSize: 12),
+                style: const TextStyle(color: Colors.white, fontSize: 20),
               ),
             ),
           ],
@@ -637,7 +661,7 @@ Widget _buildFoodItemCard({
                 title,
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 16,
+                  fontSize: 25,
                 ),
               ),
               const SizedBox(height: 4),
@@ -651,7 +675,7 @@ Widget _buildFoodItemCard({
                   const SizedBox(width: 4),
                   Text(
                     isVeg ? "veg" : "non veg",
-                    style: const TextStyle(fontSize: 12, color: Colors.grey),
+                    style: const TextStyle(fontSize: 20, color: Colors.grey),
                   ),
                 ],
               ),
@@ -668,7 +692,10 @@ Widget _buildFoodItemCard({
                   const SizedBox(width: 6),
                   Text(
                     newPrice,
-                    style: const TextStyle(fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                    ),
                   ),
                 ],
               ),
@@ -677,7 +704,7 @@ Widget _buildFoodItemCard({
         ),
         InkWell(
           onTap: () {
-            print("eat"); // Handle Eat button tap
+            print("hi");
           },
           borderRadius: BorderRadius.circular(20),
           child: Container(
@@ -691,6 +718,7 @@ Widget _buildFoodItemCard({
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 color: Colors.black,
+                fontSize: 20,
               ),
             ),
           ),
@@ -741,7 +769,7 @@ Widget _buildHiveImageCard({required String imagePath, required String label}) {
       const SizedBox(height: 8),
       Text(
         label,
-        style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
+        style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w900),
       ),
     ],
   );
@@ -781,10 +809,10 @@ Widget _foodItem(String imagePath, String price) {
     children: [
       ClipRRect(
         borderRadius: BorderRadius.circular(12),
-        child: Image.asset(imagePath, height: 40, width: 40, fit: BoxFit.cover),
+        child: Image.asset(imagePath, height: 70, width: 70, fit: BoxFit.cover),
       ),
-      const SizedBox(height: 4),
-      Text(price, style: const TextStyle(fontSize: 10)),
+      const SizedBox(height: 6),
+      Text(price, style: const TextStyle(fontSize: 20)),
     ],
   );
 }
