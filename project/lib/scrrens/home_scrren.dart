@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project/scrrens/addtocart.dart';
 //import 'package:project/scrrens/splashscreen.dart';
 
 class HomePage extends StatefulWidget {
@@ -561,6 +562,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   const SizedBox(height: 8),
                   _buildFoodItemCard(
+                    context,
                     image: 'assets/biryani.png',
                     title: 'Pizza',
                     isVeg: false,
@@ -569,6 +571,7 @@ class _HomePageState extends State<HomePage> {
                     newPrice: '₹300',
                   ),
                   _buildFoodItemCard(
+                    context,
                     image: 'assets/dhosa.jpg',
                     title: 'Aloo Paratha',
                     isVeg: true,
@@ -577,6 +580,7 @@ class _HomePageState extends State<HomePage> {
                     newPrice: '₹300',
                   ),
                   _buildFoodItemCard(
+                    context,
                     image: 'assets/pizza.jpg',
                     title: 'Aloo Paratha',
                     isVeg: true,
@@ -613,7 +617,8 @@ Widget _buildFilterChip(String label, VoidCallback onTap) {
   );
 }
 
-Widget _buildFoodItemCard({
+Widget _buildFoodItemCard(
+  BuildContext context, {
   required String image,
   required String title,
   required bool isVeg,
@@ -704,7 +709,10 @@ Widget _buildFoodItemCard({
         ),
         InkWell(
           onTap: () {
-            print("hi");
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Addtocart()),
+            );
           },
           borderRadius: BorderRadius.circular(20),
           child: Container(
